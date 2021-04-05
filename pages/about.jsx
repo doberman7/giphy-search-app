@@ -10,7 +10,7 @@ export default function About() {
       </Head>
       <div className="container">
         <h1>About</h1>
-              <p>Love giphys? So do we. use our app <b>giphy search</b> to find the perfect giphy for any occasion.</p>
+                  <p>Love giphys? So do we. use our app <b>giphy search</b> to find the perfect giphy for any occasion.</p>
 
             <h2>Why do people love giphys?</h2>
 
