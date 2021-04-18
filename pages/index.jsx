@@ -7,8 +7,8 @@ export default function Home(initialData) {
     });
     //Now that you know that the onChange event is working to grab the input’s value, you will create a function to get the value of inputs inside your component. Note that the component is also a function.
     const handleInputs = (event) => {
-        conslole.log(event.target.value);
-        conslole.log(event.target.name);
+        console.log(event.target.value);
+        console.log(event.target.name);
     };
     return (
         <div className="container">
@@ -19,8 +19,9 @@ export default function Home(initialData) {
             </Head>
 
             <h1>Giphy Search App</h1>
-            <form>
-                <input name="searchTerm" onChange={() => console.log('happens')} type="text" />
+            <form onSubmit={() => console.log('happens')}>
+                <input name="searchTerm" onChange={handleInputs} type="text" required />
+                <button>Search</button>
             </form>
             <div className="giphy-search-results-grid">
                 {initialData.catGiphys.data.map((each, index) => {
