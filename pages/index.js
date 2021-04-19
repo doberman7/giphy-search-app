@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import { useEffect } from 'react';
+import Head from 'next/head';
 
 export default function Home(initialData) {
     useEffect(() => {
@@ -10,6 +10,10 @@ export default function Home(initialData) {
         console.log(event.target.value);
         console.log(event.target.name);
     };
+    const search = (event) => {
+        event.preventDefault();
+        console.log('formInputs.searchTerm');
+    };
     return (
         <div className="container">
             <Head>
@@ -19,7 +23,7 @@ export default function Home(initialData) {
             </Head>
 
             <h1>Giphy Search App</h1>
-            <form onSubmit={() => console.log('happens')}>
+            <form onSubmit={search}>
                 <input name="searchTerm" onChange={handleInputs} type="text" required />
                 <button>Search</button>
             </form>
