@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
 
+// const key = process.env.GIPHY_KEY,
+
 export default function Home(initialData) {
     useEffect(() => {
         console.log(initialData);
@@ -23,6 +25,7 @@ export default function Home(initialData) {
             </Head>
 
             <h1>Giphy Search App</h1>
+
             <form onSubmit={search}>
                 <input name="searchTerm" onChange={handleInputs} type="text" required />
                 <button>Search</button>
@@ -43,7 +46,7 @@ export default function Home(initialData) {
 
 export async function getStaticProps() {
     let catGiphys = await fetch(
-        'https://api.giphy.com/v1/gifs/search?q=cats&api_key=nPJNlVceWHERWCSDBW5XMo1p90l7l9ie&limit=8'
+        `https://api.giphy.com/v1/gifs/search?q=cats&api_key=${process.env.giphy_key}&limit=8`
     );
     catGiphys = await catGiphys.json();
     return { props: { catGiphys: catGiphys } };
