@@ -14,15 +14,17 @@ export default function Home(initialData) {
         let { name, value } = event.target;
         setFormInputs({ ...formInputs, [name]: value });
     };
+
     const search = async (event) => {
         event.preventDefault();
         let giphys = await fetch(
-            `https://api.giphy.com/v1/gifs/search?q=${formInputs.searchTerm}&api_key=${process.env.giphy_key}&limit=6`
+            `https://api.giphy.com/v1/gifs/search?q=${formInputs.searchTerm}&api_key=nPJNlVceWHERWCSDBW5XMo1p90l7l9ie&limit=6`
         );
         giphys = await giphys.json();
         setSearchResults(giphys.data);
         setSearchTerm(formInputs.searchTerm);
     };
+
     return (
         <div className="container">
             <Head>
@@ -37,7 +39,9 @@ export default function Home(initialData) {
                 <input name="searchTerm" onChange={handleInputs} type="text" required />
                 <button>Search</button>
             </form>
+
             <h1>Search results for: {searchTerm}</h1>
+
             <div className="giphy-search-results-grid">
                 {searchResults.map((each, index) => {
                     return (
@@ -54,7 +58,7 @@ export default function Home(initialData) {
 
 export async function getStaticProps() {
     let catGiphys = await fetch(
-        `https://api.giphy.com/v1/gifs/search?q=cats&api_key=${process.env.giphy_key}&limit=8`
+        'https://api.giphy.com/v1/gifs/search?q=cats&api_key=nPJNlVceWHERWCSDBW5XMo1p90l7l9ie&limit=6'
     );
     catGiphys = await catGiphys.json();
     return { props: { catGiphys: catGiphys } };
