@@ -14,7 +14,6 @@ export default function Search(initialData) {
 
             {/* You access the parameter with the name you assigned it. It will be located inside the
             router.params object. */}
-            <h1>Search results for: {router.query.searchTerm}</h1>
             <div className="giphy-search-results-grid">
                 {initialData.giphys.map((each, index) => {
                     return (
