@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Footer from '../components/Footer';
 
 export default function Home(initialData) {
     const [formInputs, setFormInputs] = useState();
@@ -24,31 +26,36 @@ export default function Home(initialData) {
         setSearchTerm(formInputs.searchTerm);
     };
     return (
-        <div className="container">
-            <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
-                <link rel="stylesheet" href="/styles.css" />
-            </Head>
+        <>
+            <div className="container">
+                <Head>
+                    <title>Create Next App</title>
+                    <link rel="icon" href="/favicon.ico" />
+                    <link rel="stylesheet" href="/styles.css" />
+                </Head>
+                <Link href="/search/[pid]" as={`/search/${searchTerm}`}>
+                    <a>{`http://localhost:3000/search/${searchTerm}`}</a>
+                </Link>
+                <h1>Giphy Search App</h1>
 
-            <h1>Giphy Search App</h1>
-
-            <form onSubmit={search}>
-                <input name="searchTerm" onChange={handleInputs} type="text" required />
-                <button>Search</button>
-            </form>
-            <h1>Search results for: {searchTerm}</h1>
-            <div className="giphy-search-results-grid">
-                {searchResults.map((each, index) => {
-                    return (
-                        <div key={index}>
-                            <h3>{each.title}</h3>
-                            <img src={each.images.original.url} alt={each.title} />
-                        </div>
-                    );
-                })}
+                <form onSubmit={search}>
+                    <input name="searchTerm" onChange={handleInputs} type="text" required />
+                    <button>Search</button>
+                </form>
+                <h1>Search results for: {searchTerm}</h1>
+                <div className="giphy-search-results-grid">
+                    {searchResults.map((each, index) => {
+                        return (
+                            <div key={index}>
+                                <h3>{each.title}</h3>
+                                <img src={each.images.original.url} alt={each.title} />
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 }
 
