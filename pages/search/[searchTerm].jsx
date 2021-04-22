@@ -1,11 +1,17 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-
+import Link from 'next/link';
 export default function Search(initialData) {
     const router = useRouter();
     return (
         <>
             <Head>
+                <p>
+                    Go{' '}
+                    <Link href="/">
+                        <a>home</a>
+                    </Link>
+                </p>
                 <title>Search</title>
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" href="/styles.css" />
