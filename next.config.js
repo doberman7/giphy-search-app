@@ -7,7 +7,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = {
     env: {
-        giphy_key: process.env.GIPHY_KEY
+        giphy_key: process.env.NEXT_PUBLIC_GIPHY_KEY
     }
 };
 module.exports = withPlugins([

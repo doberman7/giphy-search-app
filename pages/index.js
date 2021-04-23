@@ -19,13 +19,13 @@ export default function Home(initialData) {
     const search = async (event) => {
         event.preventDefault();
         let giphys = await fetch(
-            `https://api.giphy.com/v1/gifs/search?q=${formInputs.searchTerm}&api_key=${process.env.giphy_key}&limit=6`
+            `https://api.giphy.com/v1/gifs/search?q=${formInputs.searchTerm}&api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&limit=6`
         );
         giphys = await giphys.json();
         setSearchResults(giphys.data);
         setSearchTerm(formInputs.searchTerm);
     };
-    console.log(searchResults);
+
     return (
         <>
             <div className="container">
@@ -38,6 +38,7 @@ export default function Home(initialData) {
                     <link rel="icon" href="/favicon.ico" />
                     <link rel="stylesheet" href="/styles.css" />
                 </Head>
+                <h1>Giphy Search App</h1>
 
                 <div className="logo-container">
                     <Image src="/logo.png" alt="logo" width="100px" height="100px" />
@@ -50,7 +51,6 @@ export default function Home(initialData) {
                 <Link href="/search/[pid]" as={`/search/${searchTerm}`}>
                     <a>{`http://localhost:3000/search/${searchTerm}`}</a>
                 </Link>
-                <h1>Giphy Search App</h1>
                 <div className="giphy-search-results-grid">
                     {searchResults?.map((each, index) => {
                         return (
@@ -69,7 +69,7 @@ export default function Home(initialData) {
 
 export async function getStaticProps() {
     let catGiphys = await fetch(
-        `https://api.giphy.com/v1/gifs/search?q=cats&api_key=${process.env.giphy_key}&limit=8`
+        `https://api.giphy.com/v1/gifs/search?q=cats&api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&limit=8`
     );
     catGiphys = await catGiphys.json();
     return { props: { catGiphys: catGiphys } };
