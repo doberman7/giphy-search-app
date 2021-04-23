@@ -5,11 +5,11 @@ if (process.env.NODE_ENV !== 'production') {
     dotenv.config();
 }
 
-module.exports = {
-    env: {
-        giphy_key: process.env.NEXT_PUBLIC_GIPHY_KEY
-    }
-};
+// module.exports = {
+//     env: {
+//         giphy_key: process.env.NEXT_PUBLIC_GIPHY_KEY
+//     }
+// };
 module.exports = withPlugins([
     [
         optimizedImages,
