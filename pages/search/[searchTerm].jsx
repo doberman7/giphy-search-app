@@ -14,7 +14,12 @@ export default function Search(initialData) {
                         <a>home</a>
                     </Link>
                 </p>
-                <title>Search</title>
+                {/* query: Object - The query string parsed to an object. It will be an empty object during prerendering if the page doesn't have data fetching requirements. Defaults to {}  */}
+                <title>Search results for: {router.query.searchTerm}</title>
+                <meta
+                    name="description"
+                    content={initialData.giphys.map((each, index) => each.title + ' ')}></meta>
+
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" href="/styles.css" />
             </Head>
