@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Footer from '../components/Footer';
 import Image from 'next/image';
 export default function Home(initialData) {
-    const [formInputs, setFormInputs] = useState();
+    const [formInputs, setFormInputs] = useState(null);
     const [searchTerm, setSearchTerm] = useState('cats');
     const [searchResults, setSearchResults] = useState([]);
 
@@ -41,7 +41,7 @@ export default function Home(initialData) {
                 <h1>Giphy Search App</h1>
 
                 <div className="logo-container">
-                    <Image src="/logo.png" alt="logo" width="100px" height="100px" />
+                    <Image src="/logo.png" alt="logo" width="30px" height="30px" />
                 </div>
                 <form onSubmit={search}>
                     <input name="searchTerm" onChange={handleInputs} type="text" required />
