@@ -23,7 +23,7 @@ export default function Search(initialData) {
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="stylesheet" href="/styles.css" />
             </Head>
-            <h1>Search results for: {router.query.searchTerm}</h1>
+            <h1>SEARCH results for: {router.query.searchTerm}</h1>
 
             {/* You access the parameter with the name you assigned it. It will be located inside the
             router.params object. */}
@@ -44,7 +44,7 @@ export default function Search(initialData) {
 export async function getServerSideProps(context) {
     const searchTerm = context.query.searchTerm;
     let giphys = await fetch(
-        `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=nPJNlVceWHERWCSDBW5XMo1p90l7l9ie&limit=6`
+        `https://api.giphy.com/v1/gifs/search?q=${searchTerm}&api_key=${process.env.NEXT_PUBLIC_GIPHY_KEY}&limit=6`
     );
     giphys = await giphys.json();
     return { props: { giphys: giphys.data } };
